@@ -117,7 +117,7 @@ def page2():
                     {"role": "system", "content": "制約条件:相手が「終了」「終わります」と言ったら、あなたは「ありがとうございました」と返す。"},
                     {"role": "system", "content": "制約条件:あなたは相手との会話で[対話型鑑賞力]を評価する。相手の[対話型鑑賞力]を100点満点で点数を付ける。"},
                     {"role": "system", "content": "制約条件:講評として相手の考え方・特徴を述べる。"},
-                     ] + conversation_history_1
+                     ] + conversation_history_2
             }
 
             response = requests.post("https://api.openai.com/v1/chat/completions", headers=headers, json=data).json()
@@ -173,7 +173,7 @@ def page3():
                     {"role": "system", "content": "制約条件:相手が「終了」「終わります」と言ったら、あなたは「ありがとうございました」と返す。"},
                     {"role": "system", "content": "制約条件:あなたは相手との会話で[対話型鑑賞力]を評価する。相手の[対話型鑑賞力]を100点満点で点数を付ける。"},
                     {"role": "system", "content": "制約条件:講評として相手の考え方・特徴を述べる。"},
-                     ] + conversation_history_1
+                     ] + conversation_history_3
             }
 
             response = requests.post("https://api.openai.com/v1/chat/completions", headers=headers, json=data).json()
@@ -230,7 +230,7 @@ def page4():
                     {"role": "system", "content": "制約条件:相手が「終了」「終わります」と言ったら、あなたは「ありがとうございました」と返す。"},
                     {"role": "system", "content": "制約条件:あなたは相手との会話で[対話型鑑賞力]を評価する。相手の[対話型鑑賞力]を100点満点で点数を付ける。"},
                     {"role": "system", "content": "制約条件:講評として相手の考え方・特徴を述べる。"},
-                    ] + conversation_history_1
+                    ] + conversation_history_4
             }
 
             response = requests.post("https://api.openai.com/v1/chat/completions", headers=headers, json=data).json()
@@ -288,7 +288,7 @@ def page5():
                     {"role": "system", "content": "制約条件:相手が「終了」「終わります」と言ったら、あなたは「ありがとうございました」と返す。"},
                     {"role": "system", "content": "制約条件:あなたは相手との会話で[対話型鑑賞力]を評価する。相手の[対話型鑑賞力]を100点満点で点数を付ける。"},
                     {"role": "system", "content": "制約条件:講評として相手の考え方・特徴を述べる。"},
-                     ] + conversation_history_1
+                     ] + conversation_history_5
             }
 
             response = requests.post("https://api.openai.com/v1/chat/completions", headers=headers, json=data).json()
