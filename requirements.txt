@@ -1,0 +1,6 @@
+pip 
+Pillow 
+pandas 
+openai 
+streamlit 
+Image 
