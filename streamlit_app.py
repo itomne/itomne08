@@ -43,7 +43,7 @@ def update_bg_and_show_image():
 
     # 会話回数が3の倍数の場合、画像を表示
     if st.session_state.conversation_count % 3 == 0 and st.session_state.conversation_count > 0:
-        image = Image.open("おぱんちゅうさぎ.JPGE")
+        image = Image.open("おぱんちゅうさぎ.jpg")
         st.image(image, caption="Artistic Inspiration!", use_column_width=True)
 
 # 提出ボタンが押された場合の処理に追加
