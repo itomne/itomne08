@@ -25,19 +25,17 @@ def set_bg_color(color):
 
 # 会話履歴と背景色を更新する関数の定義
 def update_bg_and_show_image():
-    # 会話回数を追跡
     if 'conversation_count' not in st.session_state:
         st.session_state.conversation_count = 0
 
-    # 会話回数に応じて背景色を更新
     colors = ['#F3FFD8', '#FFDBC9', '#FFD5EC']
     color_index = st.session_state.conversation_count // 3 % 3
     set_bg_color(colors[color_index])
 
-    # 会話回数が3の倍数の場合、画像を表示
     if st.session_state.conversation_count % 3 == 0 and st.session_state.conversation_count > 0:
-        image4 = Image.open("おぱんちゅうさぎ.jpg")
-        st.image(image4, use_column_width=True)
+        image = Image.open("おぱんちゅうさぎ.jpg")
+        st.image(image, use_column_width=True)
+
         
 def main_page():
     
@@ -60,10 +58,12 @@ def page1():
         st.markdown('### 話しかけてみよう!')
         prompt = st.text_area('テキストエリア')
         submitted = st.form_submit_button("送信")
+
+        
         if submitted:
              # 会話の回数をカウント
             st.session_state.conversation_count += 1
-            update_bg_color()
+             update_bg_and_show_image()
             st.text('質問を受け付けました！')
             conversation_history_1.append({"role": "user", "content": prompt})
             
