@@ -36,8 +36,9 @@ def update_bg_and_show_image():
 
     # 会話回数が3の倍数の場合、画像を表示
     if st.session_state.conversation_count % 3 == 0 and st.session_state.conversation_count > 0:
-        image = Image.open("おぱんちゅうさぎ.jpg")
-        st.image(image, caption="Artistic Inspiration!", use_column_width=True)
+        image4 = Image.open("おぱんちゅうさぎ.jpg")
+        st.image(image4, use_column_width=True)
+        
 def main_page():
     
     st.title('ATAIとの対話型鑑賞')
@@ -49,11 +50,7 @@ def main_page():
 
 
 def page1():
-     # フォームの定義と送信ボタン
-    with st.form('question_form'):
-        prompt = st.text_area('テキストエリア')
-        submitted = st.form_submit_button("送信") 
-        # ここで submitted を定義
+
     prompt = ""  # Initialize your prompt
     st.title("リクリット・ティラバーニャ「Who's Afraid of Red, Yellow and Green?」")
     st.write('<font size="5">好きな絵についてATAI(Art Thinking AI)  と思ったこと/感じたことを話してみましょう。「この絵は明るいね」「よくわからない」など素直にどんどん書き出して会話を楽しみましょう。</font>', unsafe_allow_html=True)
