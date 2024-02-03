@@ -30,19 +30,30 @@ def set_bg_color(color):
         """,
         unsafe_allow_html=True
     )
-
-def update_bg_color():
+# 会話履歴と背景色を更新する関数の定義
+def update_bg_and_show_image():
     # 会話回数を追跡
     if 'conversation_count' not in st.session_state:
         st.session_state.conversation_count = 0
 
-    # 会話回数に応じて色を選択
+    # 会話回数に応じて背景色を更新
     colors = ['#FFFFCC', '#CCFFFF', '#FFCCFF']
     color_index = st.session_state.conversation_count // 5 % 3
     set_bg_color(colors[color_index])
 
-# アプリの開始時に背景色を更新
-update_bg_color()
+    # 会話回数が5の倍数の場合、画像を表示
+    if st.session_state.conversation_count % 5 == 0 and st.session_state.conversation_count > 0:
+        image = Image.open("sample.gif")
+        st.image(image, caption="Artistic Inspiration!", use_column_width=True)
+
+# 提出ボタンが押された場合の処理に追加
+if submitted:
+    st.session_state.conversation_count += 1
+    update_bg_and_show_image()
+
+def update_bg_color():
+    # アプリの開始時に背景色を更新
+    update_bg_color()
 
 def main_page():
     
