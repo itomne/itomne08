@@ -53,7 +53,7 @@ def page1():
     prompt = ""
     st.title("リクリット・ティラバーニャ「Who's Afraid of Red, Yellow and Green?」")
     st.write('<font size="5">好きな絵についてATAI(Art Thinking AI) と思ったこと/感じたことを話してみましょう。「この絵は明るいね」「よくわからない」など素直にどんどん書き出して会話を楽しみましょう。</font>', unsafe_allow_html=True)
-    image_1 = Image.open("11.リクリット・ティラバーニャ「Who’s Afraid of Red, Yellow and Green,」.jpg")
+    image_1 = Image.open("11.リクリット・ティラバーニャ「“Who’s Afraid of Red, Yellow and Green,」.jpg")
     st.image(image_1, width=400)
 
     with st.form('question_form', clear_on_submit=False):
