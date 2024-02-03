@@ -37,12 +37,12 @@ def update_bg_and_show_image():
         st.session_state.conversation_count = 0
 
     # 会話回数に応じて背景色を更新
-    colors = ['#FFFFCC', '#CCFFFF', '#FFCCFF']
-    color_index = st.session_state.conversation_count // 5 % 3
+    colors = ['#F3FFD8', '#FFDBC9', '#FFD5EC']
+    color_index = st.session_state.conversation_count // 3 % 3
     set_bg_color(colors[color_index])
 
     # 会話回数が5の倍数の場合、画像を表示
-    if st.session_state.conversation_count % 5 == 0 and st.session_state.conversation_count > 0:
+    if st.session_state.conversation_count % 3 == 0 and st.session_state.conversation_count > 0:
         image = Image.open("sample.gif")
         st.image(image, caption="Artistic Inspiration!", use_column_width=True)
 
