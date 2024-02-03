@@ -105,18 +105,11 @@ def page1():
 page_names_to_funcs = {
     "Main Page": main_page,
     "1.リクリット・ティラバーニャ「Who’s　Afraid　of　Red,　Yellow　and　Green?」": page1,
-    "2.マルセル・デュシャン「泉」": page2,
-    "3.クリスト＆ジャンヌ＝クロード「L’Arc　de　Triomphe,　Wrapped」": page3,
-    "4.フェリックス・ゴンザレス＝トレス「無題(ロスの肖像 L.A.にて)」": page4,
-    "5.パブロ・ピカソ「アヴィニョンの娘たち」": page5,
     }
 
 selected_page = st.sidebar.radio("メニュー", ["main　page",
                                           "1.リクリット・ティラバーニャ「Who’s　Afraid　of　Red,　Yellow　and　Green?」",
-                                          "2.マルセル・デュシャン「泉」",
-                                          "3.クリスト＆ジャンヌ＝クロード「L’Arc　de　Triomphe,　Wrapped」",
-                                          "4.フェリックス・ゴンザレス＝トレス「無題(ロスの肖像 L.A.にて)」", 
-                                          "5.パブロ・ピカソ「アヴィニョンの娘たち」"])
+                                         ])
 if selected_page == "main　page":
     main_page()
 elif selected_page == "1.リクリット・ティラバーニャ「Who’s　Afraid　of　Red,　Yellow　and　Green?」":
