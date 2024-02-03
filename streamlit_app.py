@@ -110,7 +110,7 @@ page_names_to_funcs = {
 selected_page = st.sidebar.radio("メニュー", ["main　page",
                                           "1.リクリット・ティラバーニャ「Who’s　Afraid　of　Red,　Yellow　and　Green?」",
                                          ])
-if selected_page == "main　page":
+if selected_page == "Main　page":
     main_page()
 elif selected_page == "1.リクリット・ティラバーニャ「Who’s　Afraid　of　Red,　Yellow　and　Green?」":
     page1()
