@@ -3,17 +3,14 @@ import time
 import openai
 import requests
 import streamlit as st
-
 from PIL import Image
 
-
 # APIキーの設定
-# 設定したAPIキーの読み込み
 openai.api_key = os.environ.get("OPENAI_API_KEY")
 
+# 会話履歴保存場所
+conversation_history_1 = []
 
-#会話履歴保存場所
-conversation_history_1 = []  # Global scopes
 def set_bg_color(color):
     st.markdown(
         f"""
@@ -25,6 +22,7 @@ def set_bg_color(color):
         """,
         unsafe_allow_html=True
     )
+
 # 会話履歴と背景色を更新する関数の定義
 def update_bg_and_show_image():
     # 会話回数を追跡
@@ -40,16 +38,6 @@ def update_bg_and_show_image():
     if st.session_state.conversation_count % 3 == 0 and st.session_state.conversation_count > 0:
         image = Image.open("おぱんちゅうさぎ.jpg")
         st.image(image, caption="Artistic Inspiration!", use_column_width=True)
-
-# 提出ボタンが押された場合の処理に追加
-if submitted:
-    st.session_state.conversation_count += 1
-    update_bg_and_show_image()
-
-def update_bg_color():
-    # アプリの開始時に背景色を更新
-    update_bg_color()
-
 def main_page():
     
     st.title('ATAIとの対話型鑑賞')
