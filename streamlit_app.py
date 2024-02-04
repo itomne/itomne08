@@ -89,7 +89,7 @@ page_names_to_funcs = {
     "1.リクリット・ティラバーニャ「Who’s　Afraid　of　Red,　Yellow　and　Green?」": page1,
     }
 
-selected_page = st.sidebar.radio("メニュー", ["main　page",
+selected_page = st.sidebar.radio("メニュー", ["Main　page",
                                           "1.リクリット・ティラバーニャ「Who’s　Afraid　of　Red,　Yellow　and　Green?」",
                                          ])
 if selected_page == "Main　page":
