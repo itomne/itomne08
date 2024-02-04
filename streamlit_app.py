@@ -84,17 +84,12 @@ def page1():
             conversation_history_1.append({"role": "assistant", "content": response['choices'][0]['message']['content']})
 
     
+# ページ選択用のサイドバー
 page_names_to_funcs = {
     "Main Page": main_page,
-    "1.リクリット・ティラバーニャ「Who’s　Afraid　of　Red,　Yellow　and　Green?」": page1,
-    }
+    "1.リクリット・ティラバーニャ「Who’s Afraid of Red, Yellow, and Green?」": page1,
+    # 他のページの関数もここに追加
+}
 
-selected_page = st.sidebar.radio("メニュー", ["Main　page",
-                                          "1.リクリット・ティラバーニャ「Who’s　Afraid　of　Red,　Yellow　and　Green?」",
-                                         ])
-if selected_page == "Main　page":
-    main_page()
-elif selected_page == "1.リクリット・ティラバーニャ「Who’s　Afraid　of　Red,　Yellow　and　Green?」":
-    page1()
-else:
-    pass
+selected_page = st.sidebar.radio("メニュー", list(page_names_to_funcs.keys()))
+page_names_to_funcs[selected_page]()
