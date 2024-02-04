@@ -23,7 +23,6 @@ def set_bg_color(color):
         unsafe_allow_html=True
     )
 
-# 会話履歴と背景色を更新する関数の定義
 def update_bg_and_show_image():
     if 'conversation_count' not in st.session_state:
         st.session_state.conversation_count = 0
@@ -36,20 +35,7 @@ def update_bg_and_show_image():
         image = Image.open("おぱんちゅうさぎ.jpg")
         st.image(image, use_column_width=True)
 
-        
-def main_page():
-    
-    st.title('ATAIとの対話型鑑賞')
-    st.write('<font size="5">アート思考力を高めるために対話型鑑賞しましょう。左のサイドバーからあなたが好きな絵を選んでください。好きな絵についてATAI(Art Thinking AI) と思ったこと/感じたことを話してみましょう。「この絵は明るいね」「よくわからない」など素直にどんどん書き出して会話を楽しみましょう。好きな絵についてATAI(Art Thinking AI) と思ったこと/感じたことを話してみましょう。page1~5をの絵を選択して、対話型鑑賞をやってみましょう。</font>', unsafe_allow_html=True)
-    image_main = Image.open("総合.png")
-    st.image(image_main, width=400)
-    st.write('<font size="5">対話型鑑賞：ニューヨーク近代美術館で生まれた美術教育の新しい方法論。作品を見ながら鑑賞者と教育者で対話しながら「なぜこの絵が気になるのか？」という疑問や感想を用いて、作品の背景にあるものを考察することで、自身の思考を深める教育法です。</font>', unsafe_allow_html=True)
-    
-
-
 def page1():
-
-    # Initialize your prompt
     prompt = ""
     st.title("リクリット・ティラバーニャ「Who's Afraid of Red, Yellow and Green?」")
     st.write('<font size="5">好きな絵についてATAI(Art Thinking AI) と思ったこと/感じたことを話してみましょう。「この絵は明るいね」「よくわからない」など素直にどんどん書き出して会話を楽しみましょう。</font>', unsafe_allow_html=True)
@@ -62,7 +48,6 @@ def page1():
         submitted = st.form_submit_button("送信")
 
         if submitted:
-            # 会話の回数をカウント、存在しない場合は0で初期化
             if 'conversation_count' not in st.session_state:
                 st.session_state.conversation_count = 0
             st.session_state.conversation_count += 1
@@ -71,7 +56,6 @@ def page1():
             st.text('質問を受け付けました！')
             conversation_history_1.append({"role": "user", "content": prompt})
             
-            # OpenAIのAPIを直接使用
             headers = {
                 'Authorization': f'Bearer {openai.api_key}',
                 'Content-Type': 'application/json'
@@ -79,39 +63,23 @@ def page1():
             data = {
                 "model": "gpt-4",
                 "messages": [
-                    {"role": "system", "content": "命令書:あなたは[対話型鑑賞の専門家]です。"},
-                    {"role": "system", "content": "命令書:あなたは以下の制約条件に従って、相手に問いかけます。"},
-                    {"role": "system", "content": "制約条件:あなたはリクリット・ティラバーニャ「Who's Afraid of Red, Yellow and Green?」という作品について、相手とやり取りする"},
-                    {"role": "system", "content": "制約条件:あなたが1度の会話で行う質問は必ず1つずつ"},
-                    {"role": "system", "content": "制約条件:あなたが一度の会話で答えられる文字数は、150字以内。"},
-                    {"role": "system", "content": "制約条件:あなたが説明する時は、あなたが質問を5つ以上行った後とする。"},
-                    {"role": "system", "content": "制約条件:相手が「終了」「終わります」と言ったら、あなたは「ありがとうございました」と返す。"},
-                    {"role": "system", "content": "制約条件:あなたは相手との会話で[対話型鑑賞力]を評価する。相手の[対話型鑑賞力]を100点満点で点数を付ける。"},
-                    {"role": "system", "content": "制約条件:講評として相手の考え方・特徴を述べる。"},
+                    {"role": "system", "content": "あなたは対話型鑑賞の専門家です。"},
+                    {"role": "user", "content": prompt}
                 ] + conversation_history_1
             }
 
             response = requests.post("https://api.openai.com/v1/chat/completions", headers=headers, json=data).json()
             
-            # レスポンスの処理
             with st.spinner("ATAIの返信を受診中..."):
                 time.sleep(2)
             st.markdown('''### ATAI (Art Thinking AI)より''')
             st.info(response['choices'][0]['message']['content'])
-            # 会話の回数をカウント、存在しない場合は0で初期化
-if 'conversation_count' not in st.session_state:
-    st.session_state.conversation_count = 0
 
-# 会話の回数をインクリメント
-st.session_state.conversation_count += 1
-
-# 会話の回数が3の倍数であれば画像を表示
-if st.session_state.conversation_count % 3 == 0:
-    image_path = "おぱんちゅうさぎ.jpg"
-    image = Image.open(image_path)
-    st.image(image, caption="おぱんちゅうさぎ", use_column_width=True)
-           
-
+            # 会話の回数が3の倍数であれば画像を表示
+            if st.session_state.conversation_count % 3 == 0:
+                image_path = "おぱんちゅうさぎ.jpg"
+                image = Image.open(image_path)
+                st.image(image, caption="Artistic Inspiration!", use_column_width=True)
 
             conversation_history_1.append({"role": "assistant", "content": response['choices'][0]['message']['content']})
 
