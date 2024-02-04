@@ -98,7 +98,21 @@ def page1():
                 time.sleep(2)
             st.markdown('''### ATAI (Art Thinking AI)より''')
             st.info(response['choices'][0]['message']['content'])
+            # 会話の回数をカウント、存在しない場合は0で初期化
+if 'conversation_count' not in st.session_state:
+    st.session_state.conversation_count = 0
+
+# 会話の回数をインクリメント
+st.session_state.conversation_count += 1
+
+# 会話の回数が3の倍数であれば画像を表示
+if st.session_state.conversation_count % 3 == 0:
+    image_path = "おぱんちゅうさぎ.jpg"
+    image = Image.open(image_path)
+    st.image(image, caption="おぱんちゅうさぎ", use_column_width=True)
            
+
+
             conversation_history_1.append({"role": "assistant", "content": response['choices'][0]['message']['content']})
 
     
