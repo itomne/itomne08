@@ -93,3 +93,17 @@ page_names_to_funcs = {
 
 selected_page = st.sidebar.radio("メニュー", list(page_names_to_funcs.keys()))
 page_names_to_funcs[selected_page]()
+
+page_names_to_funcs = {
+    "Main Page": main_page,
+    "1.リクリット・ティラバーニャ「Who’s　Afraid　of　Red,　Yellow　and　Green?」": page1,
+    }
+
+selected_page = st.sidebar.radio("メニュー", ["main　page",
+                                          "1.リクリット・ティラバーニャ「Who’s　Afraid　of　Red,　Yellow　and　Green?」",])
+if selected_page == "main　page":
+    main_page()
+elif selected_page == "1.リクリット・ティラバーニャ「Who’s　Afraid　of　Red,　Yellow　and　Green?」":
+    page1()
+else:
+    pass
