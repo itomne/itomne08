@@ -93,12 +93,16 @@ def page1():
             st.markdown('''### ATAI (Art Thinking AI)より''')
             st.info(response['choices'][0]['message']['content'])
 
-            # 会話の回数が3の倍数であれば画像を表示
+            # 会話の回数が3の倍数であれば画像を表示するロジックをここに挿入
             if st.session_state.conversation_count % 3 == 0:
+                images = ["猫1.gif", "猫2.gif", "猫3.gif"]
+                image_index = (st.session_state.conversation_count // 3 - 1) % len(images)
+                image_path = images[image_index]
                 image = Image.open(image_path)
                 st.image(image, caption="Artistic Inspiration!", use_column_width=True)
 
             conversation_history_1.append({"role": "assistant", "content": response['choices'][0]['message']['content']})
+
 
     
 # ページ選択用のサイドバー
