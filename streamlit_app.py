@@ -30,7 +30,7 @@ def update_image_display():
     if st.session_state.conversation_count % 3 == 0 and st.session_state.conversation_count > 0:
         image_path = images[image_index]
         image = Image.open(image_path)
-        st.image(image, use_column_width=True)
+        st.image(image, use_column_width=True,width=400)
 
 
 def main_page():
