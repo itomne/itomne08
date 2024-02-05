@@ -24,15 +24,23 @@ def set_bg_color(color):
     )
 
 def update_bg_and_show_image():
+    # 会話回数が存在しない場合は0で初期化
     if 'conversation_count' not in st.session_state:
         st.session_state.conversation_count = 0
 
+    # 背景色を設定
     colors = ['#F3FFD8', '#FFDBC9', '#FFD5EC']
     color_index = st.session_state.conversation_count // 3 % 3
     set_bg_color(colors[color_index])
 
+    # 会話回数に応じて表示する画像を選択
+    images = ["猫_1.jpg", "猫_2.jpg", "猫_3.jpg"]
+    image_index = (st.session_state.conversation_count // 3) % 3  # 画像をループさせる
+
+    # 会話回数が3の倍数であれば画像を表示
     if st.session_state.conversation_count % 3 == 0 and st.session_state.conversation_count > 0:
-        image = Image.open("おぱんちゅうさぎ.jpg")
+        image_path = images[image_index]
+        image = Image.open(image_path)
         st.image(image, use_column_width=True)
 
 
