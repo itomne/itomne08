@@ -12,27 +12,14 @@ openai.api_key = os.environ.get("OPENAI_API_KEY")
 conversation_history_1 = []
 
 def set_bg_color():
-    # 会話回数が存在しない場合は0で初期化
+    """背景色を設定する関数"""
     if 'conversation_count' not in st.session_state:
         st.session_state.conversation_count = 0
-
-    # 背景色を設定
-    colors = ['#F3FFD8', '#FFDBC9', '#FFD5EC']
-    color_index = st.session_state.conversation_count // 3 % 3
+    colors = ['#F3FFD8', '#FFDBC9', '#FFD5EC']  # 背景色のリスト
+    color_index = st.session_state.conversation_count // 3 % len(colors)
     color = colors[color_index]
-    st.markdown(
-        f"""
-        <style>
-        .stApp {{
-            background-color: {color};
-        }}
-        </style>
-        """,
-        unsafe_allow_html=True
-    )
+    st.markdown(f"""<style>.stApp {{background-color: {color};}}</style>""", unsafe_allow_html=True)
 
-# 初期ページ読み込み時に背景色を設定
-set_bg_color()
 
 def update_image_display():
     # 会話回数に応じて表示する画像を選択
@@ -45,9 +32,6 @@ def update_image_display():
         image = Image.open(image_path)
         st.image(image, use_column_width=True)
 
-# main_pageとpage1の定義は省略
-
-# ページ選択用のサイドバーの定義とページの呼び出しも省略
 
 def main_page():
     
@@ -71,11 +55,13 @@ def page1():
         submitted = st.form_submit_button("送信")
 
         if submitted:
-            if 'conversation_count' not in st.session_state:
-                st.session_state.conversation_count = 0
+            if submitted:
             st.session_state.conversation_count += 1
+            set_bg_color()
+            update_image_display()
             st.text('質問を受け付けました！')
             conversation_history_1.append({"role": "user", "content": prompt})
+            
              # OpenAIのAPIを直接使用
             headers = {
                 'Authorization': f'Bearer {openai.api_key}',
@@ -113,7 +99,8 @@ def page1():
 
             conversation_history_1.append({"role": "assistant", "content": response['choices'][0]['message']['content']})
 
-
+# 初期ページ読み込み時に背景色を設定
+set_bg_color()
     
 # ページ選択用のサイドバー
 page_names_to_funcs = {
