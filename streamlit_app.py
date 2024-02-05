@@ -97,15 +97,6 @@ def page1():
 # ページ選択用のサイドバー
 page_names_to_funcs = {
     "Main Page": main_page,
-    "1.リクリット・ティラバーニャ「Who’s Afraid of Red, Yellow, and Green?」": page1,
-    # 他のページの関数もここに追加
-}
-
-selected_page = st.sidebar.radio("メニュー", list(page_names_to_funcs.keys()))
-page_names_to_funcs[selected_page]()
-
-page_names_to_funcs = {
-    "Main Page": main_page,
     "1.リクリット・ティラバーニャ「Who’s　Afraid　of　Red,　Yellow　and　Green?」": page1,
     }
 
