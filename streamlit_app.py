@@ -61,7 +61,7 @@ def page1():
                 st.session_state.conversation_count += 1
 
             set_bg_color()
-            update_image_display()
+            # update_image_display()
             st.text('質問を受け付けました！')
             conversation_history_1.append({"role": "user", "content": prompt})
             
