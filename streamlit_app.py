@@ -69,8 +69,6 @@ def page1():
             if 'conversation_count' not in st.session_state:
                 st.session_state.conversation_count = 0
             st.session_state.conversation_count += 1
-
-            update_bg_and_show_image()
             st.text('質問を受け付けました！')
             conversation_history_1.append({"role": "user", "content": prompt})
              # OpenAIのAPIを直接使用
