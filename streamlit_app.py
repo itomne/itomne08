@@ -11,7 +11,15 @@ openai.api_key = os.environ.get("OPENAI_API_KEY")
 # 会話履歴保存場所
 conversation_history_1 = []
 
-def set_bg_color(color):
+def set_bg_color():
+    # 会話回数が存在しない場合は0で初期化
+    if 'conversation_count' not in st.session_state:
+        st.session_state.conversation_count = 0
+
+    # 背景色を設定
+    colors = ['#F3FFD8', '#FFDBC9', '#FFD5EC']
+    color_index = st.session_state.conversation_count // 3 % 3
+    color = colors[color_index]
     st.markdown(
         f"""
         <style>
@@ -23,16 +31,10 @@ def set_bg_color(color):
         unsafe_allow_html=True
     )
 
-def update_bg_and_show_image():
-    # 会話回数が存在しない場合は0で初期化
-    if 'conversation_count' not in st.session_state:
-        st.session_state.conversation_count = 0
+# 初期ページ読み込み時に背景色を設定
+set_bg_color()
 
-    # 背景色を設定
-    colors = ['#F3FFD8', '#FFDBC9', '#FFD5EC']
-    color_index = st.session_state.conversation_count // 3 % 3
-    set_bg_color(colors[color_index])
-
+def update_image_display():
     # 会話回数に応じて表示する画像を選択
     images = ["猫1.gif", "猫2.gif", "猫3.gif"]
     image_index = (st.session_state.conversation_count // 3) % 3  # 画像をループさせる
@@ -43,6 +45,9 @@ def update_bg_and_show_image():
         image = Image.open(image_path)
         st.image(image, use_column_width=True)
 
+# main_pageとpage1の定義は省略
+
+# ページ選択用のサイドバーの定義とページの呼び出しも省略
 
 def main_page():
     
