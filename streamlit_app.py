@@ -57,7 +57,6 @@ def page1():
         if submitted:
             st.session_state.conversation_count += 1
             set_bg_color()
-            update_image_display()
             st.text('質問を受け付けました！')
             conversation_history_1.append({"role": "user", "content": prompt})
             
@@ -98,8 +97,6 @@ def page1():
 
             conversation_history_1.append({"role": "assistant", "content": response['choices'][0]['message']['content']})
 
-# 初期ページ読み込み時に背景色を設定
-set_bg_color()
     
 # ページ選択用のサイドバー
 page_names_to_funcs = {
