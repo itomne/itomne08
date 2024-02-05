@@ -34,7 +34,7 @@ def update_bg_and_show_image():
     set_bg_color(colors[color_index])
 
     # 会話回数に応じて表示する画像を選択
-    images = ["猫1.jpg", "猫2.jpg", "猫3.jpg"]
+    images = ["猫1.gif", "猫2.gif", "猫3.gif"]
     image_index = (st.session_state.conversation_count // 3) % 3  # 画像をループさせる
 
     # 会話回数が3の倍数であれば画像を表示
@@ -95,7 +95,6 @@ def page1():
 
             # 会話の回数が3の倍数であれば画像を表示
             if st.session_state.conversation_count % 3 == 0:
-                image_path = "おぱんちゅうさぎ.jpg"
                 image = Image.open(image_path)
                 st.image(image, caption="Artistic Inspiration!", use_column_width=True)
 
