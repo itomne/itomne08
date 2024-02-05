@@ -43,6 +43,7 @@ def main_page():
     
 
 def page1():
+   def page1():
     prompt = ""
     st.title("リクリット・ティラバーニャ「Who's Afraid of Red, Yellow and Green?」")
     st.write('<font size="5">好きな絵についてATAI(Art Thinking AI) と思ったこと/感じたことを話してみましょう。「この絵は明るいね」「よくわからない」など素直にどんどん書き出して会話を楽しみましょう。</font>', unsafe_allow_html=True)
@@ -55,10 +56,17 @@ def page1():
         submitted = st.form_submit_button("送信")
 
         if submitted:
-            st.session_state.conversation_count += 1
+            # ここで conversation_count を安全に初期化します。
+            if 'conversation_count' not in st.session_state:
+                st.session_state.conversation_count = 0
+            else:
+                st.session_state.conversation_count += 1
+
             set_bg_color()
+            update_image_display()
             st.text('質問を受け付けました！')
             conversation_history_1.append({"role": "user", "content": prompt})
+            
             
              # OpenAIのAPIを直接使用
             headers = {
