@@ -35,6 +35,16 @@ def update_bg_and_show_image():
         image = Image.open("おぱんちゅうさぎ.jpg")
         st.image(image, use_column_width=True)
 
+
+def main_page():
+    
+    st.title('ATAIとの対話型鑑賞')
+    st.write('<font size="5">アート思考力を高めるために対話型鑑賞しましょう。左のサイドバーからあなたが好きな絵を選んでください。好きな絵についてATAI(Art Thinking AI) と思ったこと/感じたことを話してみましょう。「この絵は明るいね」「よくわからない」など素直にどんどん書き出して会話を楽しみましょう。好きな絵についてATAI(Art Thinking AI) と思ったこと/感じたことを話してみましょう。page1~5をの絵を選択して、対話型鑑賞をやってみましょう。</font>', unsafe_allow_html=True)
+    image_main = Image.open("総合.png")
+    st.image(image_main, width=400)
+    st.write('<font size="5">対話型鑑賞：ニューヨーク近代美術館で生まれた美術教育の新しい方法論。作品を見ながら鑑賞者と教育者で対話しながら「なぜこの絵が気になるのか？」という疑問や感想を用いて、作品の背景にあるものを考察することで、自身の思考を深める教育法です。</font>', unsafe_allow_html=True)
+    
+
 def page1():
     prompt = ""
     st.title("リクリット・ティラバーニャ「Who's Afraid of Red, Yellow and Green?」")
