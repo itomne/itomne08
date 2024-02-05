@@ -73,7 +73,7 @@ def page1():
             update_bg_and_show_image()
             st.text('質問を受け付けました！')
             conversation_history_1.append({"role": "user", "content": prompt})
-            
+             # OpenAIのAPIを直接使用
             headers = {
                 'Authorization': f'Bearer {openai.api_key}',
                 'Content-Type': 'application/json'
@@ -81,8 +81,15 @@ def page1():
             data = {
                 "model": "gpt-4",
                 "messages": [
-                    {"role": "system", "content": "あなたは対話型鑑賞の専門家です。"},
-                    {"role": "user", "content": prompt}
+                    {"role": "system", "content": "命令書:あなたは[対話型鑑賞の専門家]です。"},
+                    {"role": "system", "content": "命令書:あなたは以下の制約条件に従って、相手に問いかけます。"},
+                    {"role": "system", "content": "制約条件:あなたはリクリット・ティラバーニャ「Who's Afraid of Red, Yellow and Green?」という作品について、相手とやり取りする"},
+                    {"role": "system", "content": "制約条件:あなたが1度の会話で行う質問は必ず1つずつ"},
+                    {"role": "system", "content": "制約条件:あなたが一度の会話で答えられる文字数は、150字以内。"},
+                    {"role": "system", "content": "制約条件:あなたが説明する時は、あなたが質問を5つ以上行った後とする。"},
+                    {"role": "system", "content": "制約条件:相手が「終了」「終わります」と言ったら、あなたは「ありがとうございました」と返す。"},
+                    {"role": "system", "content": "制約条件:あなたは相手との会話で[対話型鑑賞力]を評価する。相手の[対話型鑑賞力]を100点満点で点数を付ける。"},
+                    {"role": "system", "content": "制約条件:講評として相手の考え方・特徴を述べる。"},
                 ] + conversation_history_1
             }
 
