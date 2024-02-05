@@ -55,7 +55,6 @@ def page1():
         submitted = st.form_submit_button("送信")
 
         if submitted:
-            if submitted:
             st.session_state.conversation_count += 1
             set_bg_color()
             update_image_display()
