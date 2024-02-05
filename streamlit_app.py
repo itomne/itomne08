@@ -41,9 +41,7 @@ def main_page():
     st.image(image_main, width=400)
     st.write('<font size="5">対話型鑑賞：ニューヨーク近代美術館で生まれた美術教育の新しい方法論。作品を見ながら鑑賞者と教育者で対話しながら「なぜこの絵が気になるのか？」という疑問や感想を用いて、作品の背景にあるものを考察することで、自身の思考を深める教育法です。</font>', unsafe_allow_html=True)
     
-
 def page1():
-   def page1():
     prompt = ""
     st.title("リクリット・ティラバーニャ「Who's Afraid of Red, Yellow and Green?」")
     st.write('<font size="5">好きな絵についてATAI(Art Thinking AI) と思ったこと/感じたことを話してみましょう。「この絵は明るいね」「よくわからない」など素直にどんどん書き出して会話を楽しみましょう。</font>', unsafe_allow_html=True)
