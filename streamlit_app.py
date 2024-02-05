@@ -99,7 +99,7 @@ def page1():
                 image_index = (st.session_state.conversation_count // 3 - 1) % len(images)
                 image_path = images[image_index]
                 image = Image.open(image_path)
-                st.image(image, caption="Artistic Inspiration!", use_column_width=True,width=400)
+                st.image(image, caption="Artistic Inspiration!", use_column_width=True,width=100)
 
             conversation_history_1.append({"role": "assistant", "content": response['choices'][0]['message']['content']})
 
