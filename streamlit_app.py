@@ -17,8 +17,6 @@ def set_bg_color():
         st.session_state.conversation_count = 0
     colors = ['#F3FFD8', '#FFDBC9', '#FFD5EC']  # 背景色のリスト
     color_index = st.session_state.conversation_count // 3 % len(colors)
-    color = colors[color_index]
-    st.markdown(f"""<style>.stApp {{background-color: {color};}}</style>""", unsafe_allow_html=True)
 
 
 def update_image_display():
