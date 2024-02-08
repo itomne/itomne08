@@ -11,16 +11,12 @@ openai.api_key = os.environ.get("OPENAI_API_KEY")
 # 会話履歴保存場所
 conversation_history_1 = []
 
-def set_bg_color():
-    """背景色を設定する関数"""
-    if 'conversation_count' not in st.session_state:
-        st.session_state.conversation_count = 0
-    colors = ['#F3FFD8', '#FFDBC9', '#FFD5EC']  # 背景色のリスト
-    color_index = st.session_state.conversation_count // 3 % len(colors)
 
 
 def update_image_display():
     # 会話回数に応じて表示する画像を選択
+     if 'conversation_count' not in st.session_state:
+        st.session_state.conversation_count = 0
     images = ["猫1.gif", "猫2.gif", "猫3.gif"]
     image_index = (st.session_state.conversation_count // 3) % 3  # 画像をループさせる
 
